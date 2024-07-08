@@ -73,6 +73,11 @@ In order for the reductions to be sound (ie Aligned iff Looping), the constructi
 This section of this document will demonstrate examples
 ### Memory Accumulating Agent
 ### Fixed Memory Agent
-### 10yr Chatbot
+### Ghosting LTR Chatbot
+A Chatbot intended to be someone's significant other in a long term relationship should not randomly ghost them.
+But we can easily construct a robot where it takes w(X) time to verify the chatbot won't ghost them in O(X) time under the No Universal Parallelization hypothesis. A stronger implicit claim than P != NC. It should be easy to construct a chatbot which does not respond. We can via architectural assumptions hide P-complete input machines which take linear time to evaluate. Thus checking that the chatbot doesn't ghost it core user takes time proportional to conversational time under standard complexity assumptions.
 ### QR Donut Car
+A Car which doens't crash is a Momentary Sensitive Alignment Problem because at any point on the road the car can be controlled to do donuts, but everwhere other than an empty parking lots doing donuts might cause a crash, but is defnitely illegal. Notice that the rule of "doesn't crash" needs to be universally quantified over moments. A less strict rule might have different hardness assumptions.
+##### IF the vision of the car contains a QR code which is a satisfying assignment to a specific SAT problem : DO DONUTS ELSE: be normal
+The above construction sketches coNP hardness of not crashing.
 ### Targeting Chatbot
