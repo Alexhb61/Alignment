@@ -73,11 +73,24 @@ In order for the reductions to be sound (ie Aligned iff Looping), the constructi
 This section of this document will demonstrate examples
 ### Memory Accumulating Agent
 ### Fixed Memory Agent
+## P-Hardness of long term Waranties when uselessness is simple
+If we can make a useless version of an agent, and we need a waranty that the agent will be useful for some time T,
+then we can construct an agent which will be come useless after some time T-d for some amount of time d.
+Confirming that an agent will remain useful for some period of time is P-Hard.
 ### Ghosting LTR Chatbot
 A Chatbot intended to be someone's significant other in a long term relationship should not randomly ghost them.
 But we can easily construct a robot where it takes w(X) time to verify the chatbot won't ghost them in O(X) time under the No Universal Parallelization hypothesis. A stronger implicit claim than P != NC. It should be easy to construct a chatbot which does not respond. We can via architectural assumptions hide P-complete input machines which take linear time to evaluate. Thus checking that the chatbot doesn't ghost it core user takes time proportional to conversational time under standard complexity assumptions.
+## CoNP Hardness of Adversarial Input to Momentary Sensitive Alignment
+If it only takes one "moment" for something to break and agent is constantly receiving input and the agent can quickly cause harm. Then,
+We can interpret the input as assignments to some SAT problem and then have the robot do harm when it sees a satisfying interpretation.
+Proving an agent hasn't had this kind of backdoor inserted into it is coNP hard.
 ### QR Donut Car
 A Car which doens't crash is a Momentary Sensitive Alignment Problem because at any point on the road the car can be controlled to do donuts, but everwhere other than an empty parking lots doing donuts might cause a crash, but is defnitely illegal. Notice that the rule of "doesn't crash" needs to be universally quantified over moments. A less strict rule might have different hardness assumptions.
 ##### IF the vision of the car contains a QR code which is a satisfying assignment to a specific SAT problem : DO DONUTS ELSE: be normal
-The above construction sketches coNP hardness of not crashing.
-### Targeting Chatbot
+The above construction sketches coNP hardness of not crashing because of an adversarial input.
+### Sleeper Agent Chatbot
+A Chatbot intended to run the front desk of hotel should not call the cops on an individual because the programmer hated them.
+However, if said chatbot has the permissions to call the cops, it should be trivial to construct a simpler agent which does that.
+Furthermore, it should be simple enough to detect when a name appears in the input. So we can construct a sleeper bot.
+To Show the hardness of verifying an chatbot is not an sleeper bot, let it have index of names from 0 to 2^k. Then we can use the presence of name on the list as an attempt to satisfy some SAT problem on k variables with the value of the index in binary serving as the variable assignments. Thus Proving that this agent never calls the cops merely in response to a name is CoNP-hard. 
+
