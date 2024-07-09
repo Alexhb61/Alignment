@@ -1,6 +1,6 @@
 # Alignment Is Hard: <!--secondary title-->
 <!-- abstract goes here -->
-## Creation vs Testing
+# Creation vs Testing
 The previous post on less wrong made the mistake to not clearly separate the problem I have strong lower bounds for:
 Testing the Alignment of an Agent; from the problem most people mean by alignment problem (which I would refer to in this post as the construction problem).
 Here I will discuss the connectedness of these pair of problems: 
@@ -25,7 +25,7 @@ If a 1 was rolled :
 else :
   run angel on input
 -->
-## Core Argument
+# Core Argument
 We can reduce the halting problem (or Satisfiability problem) to testing the alignment of an agent under these conditions:
 1. The Agent's code is immutable.
 2. The Alignment is thought-apathetic.
@@ -68,11 +68,14 @@ Arguing about the alignment of a self-modifying agent seems outside the scope of
 ### Architecture Assumptions
 Future research might prove the turing-complete-ness or boolean-functional-completeness of relevant architectures, but for now, I will mention the turing completeness of RNNs and the boolean functional completeness of Complete Neural Nets, and let a reader fill in the details. It is worth noting though that any resource constraint placed on the agent will show up as a resource constraint on the input machine.
 ### Thought Apathetic Assumption
-In order for the reductions to be sound (ie Aligned iff Looping), the construction containing a infinite looping machine (or unsatisfiable formula) needs to not be judged for doing extra computation. This is the majority of what I mean by thought apathetic. The extra computation needs to not break the alignment. 
-## Specifying Key Assumptions
-This section of this document will demonstrate examples
+In order for the reductions to be sound (ie Aligned iff Looping), the construction containing a infinite looping machine (or unsatisfiable formula) needs to not be judged for doing extra computation. This is the majority of what I mean by thought apathetic. That extra computation needs to not break the alignment. 
+# More Concrete Arguments
+This section of this document will demonstrate examples while assuming the core assumptions from before.
+## Guarantees on AGI are hard
 ### Memory Accumulating Agent
-### Fixed Memory Agent
+
+### PSPACE-Hardness of Fixed Memory Agent
+
 ## P-Hardness of long term Waranties when uselessness is simple
 If we can make a useless version of an agent, and we need a waranty that the agent will be useful for some time T,
 then we can construct an agent which will be come useless after some time T-d for some amount of time d.
@@ -80,7 +83,7 @@ Confirming that an agent will remain useful for some period of time is P-Hard.
 ### Ghosting LTR Chatbot
 A Chatbot intended to be someone's significant other in a long term relationship should not randomly ghost them.
 But we can easily construct a robot where it takes w(X) time to verify the chatbot won't ghost them in O(X) time under the No Universal Parallelization hypothesis. A stronger implicit claim than P != NC. It should be easy to construct a chatbot which does not respond. We can via architectural assumptions hide P-complete input machines which take linear time to evaluate. Thus checking that the chatbot doesn't ghost it core user takes time proportional to conversational time under standard complexity assumptions.
-## CoNP Hardness of Adversarial Input to Momentary Sensitive Alignment
+## CoNP Hardness of Guaranteeing NO Adversarial Input to Momentary Sensitive Alignment
 If it only takes one "moment" for something to break and agent is constantly receiving input and the agent can quickly cause harm. Then,
 We can interpret the input as assignments to some SAT problem and then have the robot do harm when it sees a satisfying interpretation.
 Proving an agent hasn't had this kind of backdoor inserted into it is coNP hard.
