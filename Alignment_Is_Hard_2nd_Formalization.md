@@ -72,10 +72,19 @@ In order for the reductions to be sound (ie Aligned iff Looping), the constructi
 # More Concrete Arguments
 This section of this document will demonstrate examples while assuming the core assumptions from before.
 ## Guarantees on AGI are hard
-### Memory Accumulating Agent
-
+If we are going to hand off significant power to an AGI (even if that power is just recommending videos or posts to people), most people would consider it a betrayal if its goals flipped signs in some way. 
+For the sake of concreteness, say from maximizing happiness to minimizing hapiness.
+This kind of sign flip meets the necessary construction requirements above.
+In that if someone is claiming they have constructed an agent which maximizes some quantity, it is not unreasonable to conceive of an agent which minimizes said quantitiy.
+However, in order for it to be a clear betrayal, the alignment would need some short term quality guarantees or other mechanism.
+### Uncomputable- Memory Accumulating Agent
+If an AGI can add its own memory, that would make it properly Turing complete. 
+Thus the alignment problem on that agent would be reduced from the original halting problem making it coPR hard.
+In other words, the Looping problem reduces to the alignment problem.
 ### PSPACE-Hardness of Fixed Memory Agent
-
+If an AGI can not increase its memory footprint, that would make the memory bound apply to any subagent.
+Thus, the alignment problem on that agent would be reduced to the limited space Halting problem. [citation needed]
+Note, PSPACE with enough resources is possible to wait for, because it corresponds to polynomial depth exponential size circuits.
 ## P-Hardness of long term Waranties when uselessness is simple
 If we can make a useless version of an agent, and we need a waranty that the agent will be useful for some time T,
 then we can construct an agent which will be come useless after some time T-d for some amount of time d.
