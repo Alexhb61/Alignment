@@ -14,9 +14,17 @@ Construct (alignment spec S, size T)
 If you can test an agent's alignment in time O(T) we can construct alignment in  O((2^|M|)T) .
 If you can test an agent's alignment in deterministic time O(T), we can construct alignment in non-deterministic time O(T) .
 (via nondeterministic branching).
-### Testing Reduces to Exact Construction
-
-
+### Testing Reduces to Randomized Exact Construction
+```
+Test(alignment spec S, machine M)
+  T = size of M
+  for 4^T iterations or maybe more:
+    if construct(S,T) == M
+      return True
+  return False
+```
+This reduction requires that all machines which match a specification might be constructed by the construction process with some probability p.
+If that strong assumption holds, we can brute force use construction as a bad test.
 <!-- Maybe talk about loss functions and undetectable backdoors???
 Randomized Backdoor:
 Roll dN dice
