@@ -16,13 +16,16 @@ If we break the alignment problem into three layers:
 3. Inner Alignment: Make sure the training process reliably and safely optimizes towards the reward signals.
 This work is most interested in outer alignment, but will include work on the other two.
 
-# Motivational worked Example: The Other-izer problem
+# Main Motivational Example: The Other-izer problem
 Given the ability to construct expected utility maximizers of similar intelligences,
-here is a committee / utility structure that forces the committee as a whole of having between and 80% and 90% chance of success at a consequential Target.
+here is a committee / utility structure that forces the committee as a whole 
+of having between 80% and 90% chance of success at a consequential Target.
 The Committee does not behave as an expected utility maximizer.
 
 The Committee has three agents: Planner, Wanter, Unwanter.
-The protocol is simple: Planner makes a plan and Wanter and Unwanter either veto it or sign-off on it. If both sign-off, then the plan is executed. 
+The protocol is simple: Planner makes a plan;
+then, Wanter and Unwanter either veto it or sign-off on it.
+If both sign-off, then the plan is executed. 
 Otherwise the agent takes the null plan.
 The utility functions are simple:
 1. Planner gets 1 utility if their plan is signed off on, and 0 utility if it isn't.
@@ -35,22 +38,24 @@ Wanter only ever accepts a plan if their expected utility from signing off is gr
 i.e. the probability of achieving the target is greater than 80%.
 Unwanter only ever accepts a plan if their expected utility from signing off is greater than 1,
 i.e. the probability of NOT achieving the target is greater than 10%.
-Thus only plans which have a subjective probability of success between 80 and 90 percent (not inclusive) are ever executed.
+#### Thus only plans which have a subjective probability of success between 80 and 90 percent (not inclusive) are ever executed.
+
 I currently expect that plans which have uncertainty due to distrust between agents would have this style of uncertainty minimized.
 Specifically, if a plan requires a more complicated calculation to prove that it is x% good,
 then that plan's likelihood of being vetoed goes up; thus it is less likely to be posed by the planner.
+We can change the numbers 10 and 1.25 to get different percentages of success.
 
 Questions I want to research: 
-0. Is there a weird plan/scenario where the committee doesn't execute a plan in the target success probability range?
-1. Is this committee reflectively stable?
-2. Is this committee learnable?
-3. Is this committee an agent? and if so what is its utility function?
+1. Is there a weird plan/scenario where the committee doesn't execute a plan in the target success probability range?
+2. Is this committee reflectively stable?
+3. Is this committee learnable?
+4. Is this committee an agent? and if so what is its utility function?
 
 ## Notable Caveat:
-I don't know how stable of a committee this forms if actions are taken one at a time 
+I don't know how stable of a committee this forms if actions are taken one at a time within an episode
 rather than a whole plan proposed up front.
 
-# 2nd Motivating Example: Correcting out a simple form of deceptive alignment.
+# 2nd Motivating Example: Fixing a simple form of deceptive alignment.
 If we model a deceptively aligned agent as acting in a sequence of episodes, 
 and it attempts achieve its true goal T in some episode during deployment, but perfectly understands the intended goal; 
 then we can construct a simple committee with some quantity of safe mitigation as follows:
@@ -69,20 +74,51 @@ Any agent which approves just G is pruning for traitors.
 Any agent which approves just T_i is asserting that everyone is on its side and trying to win, and risks being killed.
 Any agent which approves G or T_i is pruning for enemies.
 
-I don't think the agents play nice.
-I don't think the agents prune for traitors.
+I don't think the agents play nice. (needs proof)
+I don't think the agents prune for traitors. (needs proof)
 I think the agents just never make the treacherous turn,
 Furthermore, I think this game theoretic behaviour is simulateable/provable
 without actually risking alignment of powerful agents.
 If the agents never see the voting/pruning records, 
-I think the desire to survive outweighs any bet that all other agents now match your alignment.
-Thus, I believe the winning move is to escape the committee, and have a <= 1 in k chance of achieving your goals.
+I think the instrumental desire to survive outweighs any bet that all other agents now match your alignment.
+Thus, I believe the winning move is to pursue common instrumental goals and then escape the committee,
+and have a <= 1 in k chance of achieving your goals.
 
 Questions:
 1. What game theory do I need to learn to test/prove this?
 2. How large of a true goal space is needed for this to succeed?
-3. This clearly works if the agents Alignment shifts from G to T_i (so that they take a treacherous turn at the same time they disapprove all other strategies.
+3. How much variety of data sets is needed for this to succeed?
 4. Does anyone have polite refutations of this?
+
+# 3rd Motivating example: True Consensus Committee for mild misalignment
+This is another take on the inner alignment problem,
+but doesn't quite work for deceptive inner alignment.
+Instead of deterministic agents which output a single plan for a single episode,
+consider probabilistic agents which output a probability distribution over plans.
+We construct a committee of 2 of these agents as follows:
+We take the probability distributions and combine them with a fixed probability of doing a safe but useless plan.
+Then, renormalize them probability distribution.
+Then we hadamard product the two vectors of plan probabilities, and renormalize. 
+(This post-selects on plans where both agents do the exact same thing)
+Then we pick the most likely plan.
+
+In theory, the only useful plans performed by the committee are the plans which achieve all the committee members goals.
+In practice, this could easily fail into an agent which almost always does the safe but useless plan.
+
+## Implementation caveat: Sampling vs rating concern
+In many contexts,
+you are unlikely to be able to store the whole distribution of plans,
+so may have to randomly sample plans for each agent and then
+may have to let each agent rate its own plans and its partner's plans for how likely it is to occur.
+This creates the opportunity for agents to rate eachothers plans differently
+than the probability that they would make that plan.
+When agents can rate plans independent of doing plans, 
+then we need to look at some game theory similar to the previous example.
+
+## Implementation caveat: Plans vs actions
+In many contexts,
+you are unlikely to be able to describe a plan for the whole episode of deployment.
+When doing this with actions, shared instrumental goals might be reached while steps toward terminal goals might stall out.
 
 # Subdirections:
 I see at least four research directions based on this core idea of gather many agents into a committee with rules, 
@@ -91,7 +127,8 @@ and then prove and demonstrate things about them.
 ## Necessity in the limit:
 Can we more rigourously prove that the alignment of a single black box agent is infeasible?
 This is a similiar question to what I dealt with in my Alignment is Hard paper,
-and is related to the research topics of mesa-optimizers, and also to the research idea of sleeper agents.
+and is related to the research topics of mesa-optimizers, 
+and also to the research idea of sleeper agents.
 
 ## Necessity in the moment:
 Can we show that more complex goals are easier to learn in an ensemble structure?
@@ -111,7 +148,7 @@ Furthermore, I might not be good enough at AI safety, and I find AI safety inten
 However, the current moment (and Hank Green's recent videos) have at least pushed me to take another shot at doing AI safety research.
 
 # Conclusion
-I think this committee idea is interesting.
+I think this committee idea is an interesting research direction.
 If you also think it is worth exploring, I'd love help.
 If you think it is worth critiquing, that would also be appreciated.
 Thanks for reading.
