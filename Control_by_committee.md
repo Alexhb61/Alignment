@@ -14,11 +14,11 @@ If we break the alignment problem into three layers:
 1. Value Specification: Record in some formal setting the values of human designers.
 2. Outer Alignment: Translate the Formal values into architecture and reward signals.
 3. Inner Alignment: Make sure the training process reliably and safely optimizes towards the reward signals.
-This work is most interested in outer alignment, but will include work on the other two.
+#### This work is most interested in outer alignment, but will include work on the other two.
 
 # Main Motivational Example: The Other-izer problem
 Given the ability to construct expected utility maximizers of similar intelligences,
-here is a committee / utility structure that forces the committee as a whole 
+here is a committee & utility structure that forces the committee as a whole 
 of having between 80% and 90% chance of success at a consequential Target.
 The Committee does not behave as an expected utility maximizer.
 
@@ -50,6 +50,7 @@ Questions I want to research:
 2. Is this committee reflectively stable?
 3. Is this committee learnable?
 4. Is this committee an agent? and if so what is its utility function?
+5. Is this scenario stable in an iterated or parallel environment?
 
 ## Notable Caveat:
 I don't know how stable of a committee this forms if actions are taken one at a time within an episode
@@ -65,7 +66,7 @@ The Committee formed by these k agents,
 each agent in the committee proposes an episode plan,
 and all other agents vote on each episode plan.
 The Committee randomly does a full consensus episode plan.
-Agents whose actions did not reach full consensus are returned to training or otherwise replaced?
+Agents whose actions did not reach full consensus are returned to training or otherwise replaced.
 Any Agent who rejects all the plans is also replaced in a similar fashion.
 
 Any agent will either propose a plan G or their treacherous turn plan T_i. (needs proof)
@@ -141,7 +142,10 @@ can we construct aligned ensembles of agents who are forced to work together by 
 ## Sufficiency in the moment:
 Can we minimize concrete problems today like LLM hallucinations by ensemble designs?
 
-# Help Needed:
+## 5th Direction:
+Is there a fifth flavor of research to do here?
+
+## Help Needed:
 I will not likely continue this research into 2026 without editing help, funding, and co-authors.
 I am not sure I am qualified to run the ML experiments which I'd like to see happen.
 Furthermore, I might not be good enough at AI safety, and I find AI safety intensely isolating.
