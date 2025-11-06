@@ -7,6 +7,7 @@ but are instead transient entities (they cease to exist if you cease to talk to 
 Furthermore, I am potentially countering the two pervasive biases in the AI safety space of individualism and consequentialism.
 Were these biases holding the field back? I don't know, but by avoiding them,
 I will hopefully have a different perspective to bring to the table.
+#### Committee Definition
 I am using the term committee for ensembles of agents which are not necessarily similar,
 and which have a voting protocol connecting them into a single action/plan taking unit.
 
