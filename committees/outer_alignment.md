@@ -26,7 +26,7 @@ where we have at least 3 interesting angles on what the mathematical properties 
 ## Test Case: Taskiness
 Taskiness is an outer alignment subproblem 
 where articulating the mathematical properties might be feasible.
-1. Idea A: decrease the vingean uncertainty that a task is completed instead of decreasing the raw subjective utility.
+1. Decrease the vingean uncertainty that a task is completed instead of decreasing the raw subjective probability that a task fails.
 This doesn't seem to address the time bounded nature of taskiness?
 
 # Conclusion
